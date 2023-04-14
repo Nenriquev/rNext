@@ -1,9 +1,10 @@
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import styles from '../../styles/components.module.css'
 
 const WeaponsInput = (props) => {
 
   return (
-    <div>
+    <div className={styles.input__layout}>
         <FormControl className='box' sx={{width: '100%', "& .MuiOutlinedInput-root.Mui-focused": {"& > fieldset": {borderColor: "orange"}}}}>
           <InputLabel>Arma</InputLabel>
             <Select

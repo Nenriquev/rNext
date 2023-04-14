@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
-import {FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material'
+import {FormControl, InputLabel, Select, MenuItem, Button, Box } from '@mui/material'
 import Critical from "./HomeComponents/Critical";
 import WeaponsInput from "./HomeComponents/WeaponsInput";
 import CriatureInput from "./HomeComponents/CriatureInput";
 import WeaponCriatureType from "./HomeComponents/WeaponCriatureType";
 import LimitTypeInput from "./HomeComponents/LimitTypeInput";
+import InputRoll from "./HomeComponents/InputRoll";
 import styles from '../styles/home.module.css'
+import ArmorInput from "./HomeComponents/ArmorInput";
  
 
 const Home = () => {
@@ -96,8 +98,8 @@ const Home = () => {
       <Link href='/uploadFile'>Subir un archivo</Link>
       <button type="button" onClick={resetData}>reset</button>
       <form className={styles.form} ref={formRef} onSubmit={handleSubmit}>
-        <label>Tirada <input onChange={handleData} type="text" id="tirada" name="tirada" required/></label>
-        <label>Armadura <input onChange={handleData} type="text" id="armadura" name="armadura" required/></label>
+        <InputRoll onChange={handleData}/>
+        <ArmorInput onChange={handleData}/>
         <FormControl className="box" sx={{width: '100%', "& .MuiOutlinedInput-root.Mui-focused": {"& > fieldset": {borderColor: "orange"}}}}>
         <InputLabel>Tipo de arma</InputLabel>
         <Select
@@ -133,8 +135,7 @@ const Home = () => {
           ( selectedCategory.weapon === 'artes marciales' ? <LimitTypeInput type={'artes marciales'} onChange={handleData} name={data.limite}/> : '')
         }
         
-          
-  
+        
 
 
         <Button sx={{width:'100%'}} type='submit' variant="contained" color="error">Tirar</Button>
@@ -152,6 +153,5 @@ const Home = () => {
     </div>
   );
 }
-
 
 export default Home
